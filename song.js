@@ -10,8 +10,7 @@
         -youtube URL(string)
         -album name(string)
         -album year
-        -album genre(s) (array)
-        -album tracks(array)
+    
 */
 
 // Song object constructor
