@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    .row{
+  display:inline-block;
+}
+.field{
+  background-color: white;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+  display: block;
+}
+.center {
+  margin: 0px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  font-family: Arial;
+  font-size: 50px;
+}
+.red{
+  color:red;
+}
+  </style>
+</head>
+<body>
+
+    <div class="row">
+      <div class="field center" id="1">-</div>
+      <div class="field center" id="2">-</div>
+      <div class="field center" id="3">-</div>
+    </div>
+    <div class="row">
+      <div class="field center" id="4">-</div>
+      <div class="field center" id="5">-</div>
+      <div class="field center" id="6">-</div>
+    </div>
+    <div class="row">
+      <div class="field center" id="7">-</div>
+      <div class="field center" id="8">-</div>
+      <div class="field center" id="9">-</div>
+    </div>
+
+  <script type="text/javascript">
+  let counter=0;
+
+const fields=document.getElementsByClassName("field");
+
+
+
+function stopProp(e){
+  e.stopPropagation();
+};
+
+
+function isFull(a){
+  let c=0;
+  for(prop of a){
+    if(prop.innerText!=="-"){
+      c++;
+    }
+
+  }
+  return c;
+}
+// console.log(isFull(fields));
+
+const gfield=document.getElementsByClassName("field");
+for(x of gfield){
+  x.addEventListener("click", clickField);
+  x.addEventListener("click", checker);
+}
+
+
+// document.addEventListener("click", clickField);
+// document.addEventListener("click", checker);
+
+
+  function clickField(event){
+      if(event.target.innerText!=="O" && event.target.innerText!=="X" && counter%2!==0){
+    event.target.innerText="O";
+        counter++;
+  }else if(event.target.innerText!=="O" && event.target.innerText!=="X" && counter%2===0){
+    event.target.innerText="X";
+    event.target.classList.add("red");
+        counter++;
+  }
+
+
+
+}
+
+
+function checker(){
+
+ if((fields[0].innerText==="X" && fields[1].innerText==="X" && fields[2].innerText==="X") || (fields[3].innerText==="X" && fields[4].innerText==="X" && fields[5].innerText==="X") || (fields[6].innerText==="X" && fields[7].innerText==="X" && fields[8].innerText==="X") ||  (fields[0].innerText==="X" && fields[3].innerText==="X" && fields[6].innerText==="X") ||
+(fields[1].innerText==="X" && fields[4].innerText==="X" && fields[7].innerText==="X") ||(fields[2].innerText==="X" && fields[5].innerText==="X" && fields[8].innerText==="X") ||
+(fields[0].innerText==="X" && fields[4].innerText==="X" && fields[8].innerText==="X") ||
+(fields[2].innerText==="X" && fields[4].innerText==="X" && fields[6].innerText==="X")){
+   if(confirm("X has won!")){
+    window.location.reload();
+}
+ } else if((fields[0].innerText==="Y" && fields[1].innerText==="Y" && fields[2].innerText==="Y") || (fields[3].innerText==="O" && fields[4].innerText==="O" && fields[5].innerText==="O") || (fields[6].innerText==="O" && fields[7].innerText==="O" && fields[8].innerText==="O") ||  (fields[0].innerText==="O" && fields[3].innerText==="O" && fields[6].innerText==="O") ||
+(fields[1].innerText==="O" && fields[4].innerText==="O" && fields[7].innerText==="O") ||(fields[2].innerText==="O" && fields[5].innerText==="O" && fields[8].innerText==="O") ||
+(fields[0].innerText==="O" && fields[4].innerText==="O" && fields[8].innerText==="O") ||
+(fields[2].innerText==="O" && fields[4].innerText==="O" && fields[6].innerText==="O")){
+     if(confirm("O has won!")){
+    window.location.reload();
+}
+ }
+  else {
+    if(isFull(fields)===9){
+       if(confirm("Cats game!")){
+    window.location.reload();
+}
+
+    }
+  }
+
+
+
+}
+
+
+
+
+
+  </script>
+
+
+
+
+</body>
+</html>
