@@ -46,17 +46,19 @@
     </div>
 
   <script type="text/javascript">
+
+  // defining variable (let) which is tracking changes about turn of players
+  //player X has turnns only on even number 0,2,4...
+  //player O plays only whet counter has value of odd numbers
   let counter=0;
 
 const fields=document.getElementsByClassName("field");
-
-
 
 function stopProp(e){
   e.stopPropagation();
 };
 
-
+//function which is checking are all fields are full
 function isFull(a){
   let c=0;
   for(prop of a){
@@ -67,19 +69,19 @@ function isFull(a){
   }
   return c;
 }
-// console.log(isFull(fields));
 
+// defining game field const gfield
 const gfield=document.getElementsByClassName("field");
 for(x of gfield){
+  //for every element add to listeners and pass two functions
   x.addEventListener("click", clickField);
   x.addEventListener("click", checker);
 }
 
 
-// document.addEventListener("click", clickField);
-// document.addEventListener("click", checker);
 
 
+// define function clickField
   function clickField(event){
       if(event.target.innerText!=="O" && event.target.innerText!=="X" && counter%2!==0){
     event.target.innerText="O";
@@ -96,25 +98,31 @@ for(x of gfield){
 
 
 function checker(){
-
+// checks any situation when player X wins
  if((fields[0].innerText==="X" && fields[1].innerText==="X" && fields[2].innerText==="X") || (fields[3].innerText==="X" && fields[4].innerText==="X" && fields[5].innerText==="X") || (fields[6].innerText==="X" && fields[7].innerText==="X" && fields[8].innerText==="X") ||  (fields[0].innerText==="X" && fields[3].innerText==="X" && fields[6].innerText==="X") ||
 (fields[1].innerText==="X" && fields[4].innerText==="X" && fields[7].innerText==="X") ||(fields[2].innerText==="X" && fields[5].innerText==="X" && fields[8].innerText==="X") ||
 (fields[0].innerText==="X" && fields[4].innerText==="X" && fields[8].innerText==="X") ||
 (fields[2].innerText==="X" && fields[4].innerText==="X" && fields[6].innerText==="X")){
    if(confirm("X has won!")){
+      //reload after wining message
     window.location.reload();
 }
+// checks any situation when player O wins
  } else if((fields[0].innerText==="Y" && fields[1].innerText==="Y" && fields[2].innerText==="Y") || (fields[3].innerText==="O" && fields[4].innerText==="O" && fields[5].innerText==="O") || (fields[6].innerText==="O" && fields[7].innerText==="O" && fields[8].innerText==="O") ||  (fields[0].innerText==="O" && fields[3].innerText==="O" && fields[6].innerText==="O") ||
 (fields[1].innerText==="O" && fields[4].innerText==="O" && fields[7].innerText==="O") ||(fields[2].innerText==="O" && fields[5].innerText==="O" && fields[8].innerText==="O") ||
 (fields[0].innerText==="O" && fields[4].innerText==="O" && fields[8].innerText==="O") ||
 (fields[2].innerText==="O" && fields[4].innerText==="O" && fields[6].innerText==="O")){
      if(confirm("O has won!")){
+       //reload after wining message
     window.location.reload();
 }
  }
   else {
+    //checking for cats game
+    //if nobody wins, and all fields are full then it is cats game
     if(isFull(fields)===9){
        if(confirm("Cats game!")){
+          //reload after cats game message
     window.location.reload();
 }
 
