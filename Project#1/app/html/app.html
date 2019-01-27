@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="../css/app.css"></link>
+  <title>TODO LIST APP/title></title>
+      
+</head>
+<body>
+  <div id="app">
+      <!-- DASHBOARD-->
+      <div id="dashboard">
+          <h2>Dashboard</h2>
+          <button id="new-list">Create new TO-DO List</button>
+          <!-- New list hidden container--> 
+          <div id="new-list-container" class="initially-hidden">
+            <h3>Please create new to-do list</h3>
+            <br><br> 
+              <input type="text" id="new-li-name"><br><br>
+              <button id="new-li-save">Save new list</button>
+          </div>
+          <!-- All lists container-->
+          <div id="all-lists-container" class="initially-hidden">
+              <ol></ol>
+          </div>  
+        
+      </div>
+      <div id="list-container" class="initially-hidden">
+          <h3 id="list-name"></h3>
+
+          <input type="text" id="li-input"><br>
+          <button id="li-add">Add to list</button>
+          <button>Save list</button>
+  </div>
+    
+    
+  </div>
+
+
+  <script src="../js/app.js"></script>
+</body>
+</html>
